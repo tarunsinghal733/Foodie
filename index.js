@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require("express")
 var bodyParser = require("body-parser")
 var mongoose = require("mongoose")
@@ -9,7 +10,7 @@ app.use(bodyParser.urlencoded({
     extended:true
 }));
 // mongodb://127.0.0.1:27017/foodie-db mongosh show dbs 
- mongoose.connect('mongodb+srv://foodie-db:FOODIE_db@foodie-db.foqu6mw.mongodb.net/?retryWrites=true&w=majority',{
+ mongoose.connect(process.env.MONGO_URI,{
          useNewUrlParser: true,
         useUnifiedTopology: true
 });
@@ -37,4 +38,4 @@ app.get("/",(req,res)=>{
     })
     return res.redirect('index.html');
 }).listen(4500);
-console.log("listening on PORT 4500");
+console.log(`listening on PORT`);
