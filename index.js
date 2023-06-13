@@ -37,5 +37,5 @@ app.get("/",(req,res)=>{
         "Allow-access-Allow-Origin": '*'
     })
     return res.redirect('index.html');
-}).listen(4500);
-console.log(`listening on PORT`);
+}).listen(process.env.PORT);
+console.log("listening on 4500");
